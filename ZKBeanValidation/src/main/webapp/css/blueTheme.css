@@ -1,0 +1,152 @@
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Listbox CSS Customization
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* Header Column Background Color */
+.mylist .z-listbox-header tr.z-listhead,div.z-listbox-header
+		tr.z-auxhead {
+	background-image: none;
+	background-color: #628AC8;
+}
+
+.mylist div.z-listbox-header
+		tr.z-auxhead {
+	background-image: none;
+	background-color: transparent;
+}
+
+/* Header Column Background Color when click on the header*/
+.mylist .z-listbox-header th.z-listheader-sort-over {
+	background-image: none;
+	background-color: #628AC8;
+}
+
+/* odd Rows Selected Color */
+.mylist .z-listitem.z-listbox-odd.z-listitem-seld {
+	background-image: none;
+	background-color: #95BDFB;
+}
+
+.mylist .z-listitem-seld {
+	background-image: none;
+	background-color: #95BDFB;
+}
+
+/* When moving the mouse on the list */
+.mylist .z-listitem.z-listitem-over {
+	background-image: none;
+	background-color: #95BDFB;
+}
+
+.fimgtopbkg {
+	background-image: url("../images/blue/top_bkg.gif");
+}
+
+.fimgsidetop {
+	background-image: url("../images/blue/side_top.gif");
+}
+
+.fimgsidemid {
+	background-image: url("../images/blue/side_mid.gif");
+}
+
+.fimgsidebgk {
+	background-image: url("../images/blue/side_bkg.gif");
+}
+
+.fimgbottom {
+	background-image: url("../images/blue/low_bkg.gif");
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Label CSS Customization
+/* ----------------------------------------------------------------------------------------------------------------------- */
+.TitleWBold.z-label {
+	color: #FFFFFF;
+}
+
+.sectionTitleLabel.z-label {
+	color: #0C6BA8;
+}
+
+.flabel.z-label {
+	color: #800000;
+}
+
+.sectionTitleLabel.z-label {
+	color: #0C6BA8;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Div(s)
+/* ----------------------------------------------------------------------------------------------------------------------- */
+.sectionTitleBar {
+	background: none repeat scroll 0 0 #6F8992;
+}
+
+.sectionSeperator {
+	border-bottom: 4px solid #628AC8;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Button
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* color styles
+  ---------------------------------------------- */
+
+/* blue */
+.theme {
+	color: #d9eef7;
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee),
+		to(#0078a5) );
+	background: -moz-linear-gradient(top, #00adee, #0078a5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee',
+		endColorstr='#0078a5' );
+}
+
+.theme:hover {
+	background: #007ead;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0095cc),
+		to(#00678e) );
+	background: -moz-linear-gradient(top, #0095cc, #00678e);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc',
+		endColorstr='#00678e' );
+}
+
+.theme:active {
+	color: #80bed6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0078a5),
+		to(#00adee) );
+	background: -moz-linear-gradient(top, #0078a5, #00adee);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5',
+		endColorstr='#00adee' );
+}
+
+/* Start: MessageBox Start here
+---------------------------------------------- */
+.z-messagebox-btn {
+	color: #fef4e9;
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee),
+		to(#0078a5) );
+	background: -moz-linear-gradient(top, #00adee, #0078a5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee',
+		endColorstr='#0078a5' );
+}
+
+.z-messagebox-btn:hover {
+	background: #007ead;
+}
+
+.z-messagebox-window .z-window-highlighted-hm,.z-window-highlighted-br,.z-window-highlighted-cr,.z-window-highlighted-cl,.z-window-highlighted-hr,.z-window-highlighted-tr,.z-window-highlighted-hl
+	{
+	background-image: none;
+	background-color: #628AC8;
+}
+
+/* End : MessageBox End Here
+---------------------------------------------- */

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/tx
+                   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<!--  
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property value="jdbc:mysql://localhost:3306/addressbook"
+				name="url" />
+			<property value="root" name="username" />
+			<property value="Quien777Dice" name="password" />
+		</bean>
+
+-->
+
+ 
+<!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property value="jdbc:postgresql://localhost:5432/test2"
+			name="url" />
+		<property value="postgres" name="username" />
+		<property value="Quien777Dice" name="password" />
+	</bean> -->
+
+
+ 	
+
+ 
+ 
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property value="jdbc:postgresql://localhost:5432/prueba"
+			name="url" />
+		<property value="postgres" name="username" />
+		<property value="Quien777Dice" name="password" />
+	</bean>
+
+	 
+	<!-- Define the datasource; define the session factory, we need specify 
+		the packagesToScan property, this property will scan all entity annotated 
+		class. define the context component-scan basepackage, this will scan all 
+		@Repository annotated Class -->
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="zkexample.domain" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.zeroDateTimeBehavior">convertToNull</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Container Configuration: The IOC container configuration xml file is 
+		shown below,The container has the <context:component-scan> element and <context:annotation-config/> 
+		<context:annotation-config/> used to intimate the beans of this IOC container 
+		are annotation supported. By pass the base path of the beans as the value 
+		of the base-package attribute of context:component-scan element, we can detect 
+		the beans and registering their bean definitions automatically without lots 
+		of overhead. The value of base-package attribute is fully qualified package 
+		name of the bean classes. We can pass more than one package names by comma 
+		separated -->
+
+	<context:annotation-config />
+	<context:component-scan base-package="zkexample" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	
+	<bean id="CRUDService" class="zkexample.service.CRUDServiceImpl" />
+
+</beans>

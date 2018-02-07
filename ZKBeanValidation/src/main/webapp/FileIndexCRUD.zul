@@ -1,0 +1,250 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window id="fileCRUD" border="none"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.FileIndexCRUDVM')">
+		<div
+			form="@id('fx') @load(vm.selectedRecord) @save(vm.selectedRecord, before='saveThis')">
+
+			<div width="96%">
+				<span width="100%">
+					<div sclass="sectionTitle">
+						<separator />
+						<label id="lcaption" sclass="sectionTitleLabel"
+							value="Añadir y Editar Archivos" />
+						<label id="readonly" sclass="sectionTitleLabel"
+							value="Solo Lectura" visible="@load(vm.makeAsReadOnly)" />
+						<image
+							src="@load(fxStatus.dirty?'images/unsaved32x32.png':'')" />
+
+					</div>
+				</span>
+				<div id="buttonsDiv"
+					style="float:right;margin-top:6px;">
+					<button label="Indexar" mold="trendy"
+						visible="@load(not vm.makeAsReadOnly)"
+						onClick="@command('saveThis', action=0)"
+						sclass="mybutton button theme small">
+					</button>
+					
+					<button
+						label="@load(vm.makeAsReadOnly ?'Close':'Cancelar')" mold="trendy"
+						onClick="@command('cancel')"
+						sclass="mybutton button theme small">
+					</button>
+				</div>
+				<div style="clear: both;"></div>
+				<div sclass="sectionSeperator"></div>
+			</div>
+
+			<span width="100%">
+				<div sclass="sectionTitle">
+					<separator />
+					<label value="Informacion Archivo"
+						sclass="sectionTitleLabel" />
+					<separator />
+				</div>
+			</span>
+			<div width="100%">
+				<panel width="100%" sclass="sectionPanel">
+				<panelchildren>
+					<separator />
+					<grid sclass="vgrid">
+						<columns>
+							<column hflex="30%">
+								<vlayout>
+ 								<hlayout>
+									<hbox>
+								          <label value="Seleccionar Archivo o Archivos" />
+								         <button label="Upload" upload="true, multiple=true" 
+								             onUpload="@command('onUploadPDF',upEvent=event)" sclass="mybutton button theme small">
+								            </button>
+								         <button label="Mostrar PDF" 
+								                onClick="@command('showPDF', path= pathfile )">
+								           </button>
+								     </hbox>
+								 
+								</hlayout>
+								
+									
+									<hlayout>
+									
+										<label value="pathFile"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="pathfile"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.pathFile)" />
+								</vlayout>	
+								<hlayout  >
+										<label value="Nombre Archivo"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="nameFile"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.nameFile)" />
+									</hlayout>
+									<hlayout  >
+										<label value="cedula"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="cedula"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.cedula)" />
+									</hlayout>
+									
+									<hlayout  >
+										<label value="apelpate"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="apelpate"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.apelpate)" />
+									</hlayout>
+									<hlayout  >
+										<label value="apelmate"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="apelmate"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.apelmate)" />
+									</hlayout>
+									<hlayout  >
+										<label value="nombres"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="nombres"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.nombres)" />
+									</hlayout>
+									<hlayout  >
+										<label value="nomjuri"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="nomjuri"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.nomjuri)" />
+									</hlayout>
+									<hlayout  >
+										<label value="tipocont"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="tipocont"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.tipocont)" />
+									</hlayout>
+									<hlayout  >
+										<label value="direccion"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="direccion"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.direccion)" />
+									</hlayout>
+									<hlayout  >
+										<label value="observaciones"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="observaciones"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.observaciones)" />
+									</hlayout>
+							</column>
+							<column hflex="70%">
+							
+								<vlayout height="400px">
+									<iframe height="400px" width="100%" id="reportframe"
+								          content="@bind(vm.fileContent)">
+								     </iframe>
+								</vlayout>
+								
+								
+							</column>
+						</columns>
+						<rows>
+							<row width="100%">
+								
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+					<!-- 
+								<row>
+								<hlayout  >
+										<label value="codigo_ciudad"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+								        <intbox id="codigo_ciudad"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.codigo_ciudad)" constraint="no negative"
+								                width="150px" />
+										
+										
+									</hlayout>
+							</row>
+					
+					 -->
+							<row>
+								
+							</row>
+							<row>
+								
+							</row>
+							
+							
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			
+			<panel width="75%" sclass="sectionPanel">
+				<panelchildren>
+					<grid>
+						
+					</grid>
+				</panelchildren>
+			</panel>
+				
+			</div>
+						
+			<separator />
+
+			<separator />
+			
+			<separator />
+			
+		</div>
+	</window>
+</zk>

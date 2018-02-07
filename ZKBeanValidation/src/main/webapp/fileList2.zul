@@ -1,0 +1,98 @@
+<?page title="Files List" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="fileList" border="none" height="80%" width="96%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.FileListVM')">
+		<separator />
+		<separator />
+		<div width="100%">
+			<div sclass="sectionTitle">
+				<separator />
+				<label value="Archivos Digitalizados" sclass="sectionTitleLabel" />
+				<separator />
+			</div>
+			<div style="float:right">
+				<button label="Modulo Usuarios" onClick="@command('usuarios')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				<button label="Modulo Indexacion" onClick="@command('indexador')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				<button label="Crear Digitalizacion" onClick="@command('onAddNew')"
+					mold="trendy" sclass="mybutton button theme small" />
+				<button label="Salir" mold="trendy" id="btnlogout"
+					sclass="mybutton button theme small" onClick="@command('Logout')" />
+			</div>
+			<div style="clear: both;"></div>
+			<div sclass="sectionSeperator"></div>
+		</div>
+		<separator />
+		
+		
+		<listbox id="" mold="paging" pageSize="11" pagingPosition="top"
+			sclass="mylist" selectedItem="@bind(vm.selectedItem)"
+			model="@load(vm.dataSet)">
+		
+			<!-- 
+			
+			<auxhead>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFileFilter.fileName)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFileFilter.filePath)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+			</auxhead>
+		
+			 -->
+			
+			
+			
+			<listhead sizable="true">
+				<listheader label="Nombre Archivo" sortDirection="ascending"
+					sort="auto(nameFile)" />
+				<listheader label="Path Archivo" sort="auto(pathFile)" />
+				<listheader label="Action" />
+			</listhead>
+			
+		
+			<template name="model" var="p1">
+				<listitem>
+					<listcell label="@load(p1.nameFile)" />
+					<listcell label="@load(p1.pathFile)" />
+					<listcell>
+						<hbox spacing="20px">
+							<image
+								onClick="@command('onEdit',fileRecord=p1)" sclass="fimageedit"
+								visible="@load(p1.system eq 0)"
+								tooltiptext="Editar Archivo">
+							</image>
+							<image
+								onClick="@command('openAsReadOnly',fileRecord=p1)"
+								sclass="fimageView" tooltiptext="Visualizar detalles archivo">
+							</image>
+							<image
+								tooltip="msgPopup, position=before_start, delay=500"
+								sclass="fImageSystem" visible="@load(p1.system eq 0)" />
+							<image
+								onClick="@command('onDelete',fileRecord=p1)"
+								visible="@load(p1.system eq 0)" sclass="fimageDelete"
+								tooltiptext="Eliminar Archivo ">
+							</image>
+						</hbox>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		
+		<popup id="msgPopup">
+			<label id="msg"
+				value="Usuario definido por sistema. Editar y Eliminar no permitido.">
+			</label>
+		</popup>
+	</window>
+</zk>

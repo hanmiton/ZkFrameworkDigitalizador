@@ -1,0 +1,109 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window id="userCRUD" border="none"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.MetaCRUDVM')">
+		<div
+			form="@id('fx') @load(vm.selectedRecord) @save(vm.selectedRecord, before='saveThis')">
+
+			<div width="96%">
+				<span width="100%">
+					<div sclass="sectionTitle">
+						<separator />
+						<label id="lcaption" sclass="sectionTitleLabel"
+							value="Añadir y Editar Metas" />
+						<label id="readonly" sclass="sectionTitleLabel"
+							value="Solo Lectura" visible="@load(vm.makeAsReadOnly)" />
+						<image
+							src="@load(fxStatus.dirty?'images/unsaved32x32.png':'')" />
+
+					</div>
+				</span>
+				<div id="buttonsDiv"
+					style="float:right;margin-top:6px;">
+					<button label="Crear y Salir" mold="trendy"
+						visible="@load(not vm.makeAsReadOnly)"
+						onClick="@command('saveThis', action=0)"
+						sclass="mybutton button theme small">
+					</button>
+					<button label="Crear y Seguir" mold="trendy"
+						visible="@load(not vm.makeAsReadOnly)"
+						onClick="@command('saveThis', action=1)"
+						sclass="mybutton button theme small">
+					</button>
+					<button
+						label="@load(vm.makeAsReadOnly ?'Close':'Cancelar')" mold="trendy"
+						onClick="@command('cancel')"
+						sclass="mybutton button theme small">
+					</button>
+				</div>
+				<div style="clear: both;"></div>
+				<div sclass="sectionSeperator"></div>
+			</div>
+
+			<span width="100%">
+				<div sclass="sectionTitle">
+					<separator />
+					<label value="Informacion Metas"
+						sclass="sectionTitleLabel" />
+					<separator />
+				</div>
+			</span>
+			<panel width="95%" sclass="sectionPanel">
+				<panelchildren>
+					<separator />
+					<grid sclass="vgrid">
+						<columns>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+						</columns>
+						<rows>
+							<row>
+								<vlayout>
+									<hlayout>
+										<label value="Nombre Meta"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="nombremeta"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.nameMeta)" />
+								</vlayout>
+								<vlayout>
+									<hlayout>
+										<label value="Valor Meta"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="valormeta"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.valorMeta)" />
+								</vlayout>
+								<vlayout>
+									<hlayout>
+										<label value="Descripcion"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="descripcion"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.descripcion)" />
+								</vlayout>
+							</row>
+							
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			<separator />
+
+			<separator />
+		</div>
+	</window>
+</zk>

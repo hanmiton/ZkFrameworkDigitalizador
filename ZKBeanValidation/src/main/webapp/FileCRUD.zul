@@ -1,0 +1,119 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window id="fileCRUD" border="none"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.FileCRUDVM')">
+		<div
+			form="@id('fx') @load(vm.selectedRecord) @save(vm.selectedRecord, before='saveThis')">
+
+
+			<div width="96%">
+				<span width="100%">
+					<div sclass="sectionTitle">
+						<separator />
+						
+						<label id="lcaption" sclass="sectionTitleLabel"
+							value="Añadir y Editar Archivos" />
+						<label id="readonly" sclass="sectionTitleLabel"
+							value="Solo Lectura" visible="@load(vm.makeAsReadOnly)" />
+						<image
+							src="@load(fxStatus.dirty?'images/unsaved32x32.png':'')" />
+
+					</div>
+				</span>
+				<div id="buttonsDiv"
+					style="float:right;margin-top:6px;">
+					<button
+						label="@load(vm.makeAsReadOnly ?'Close':'Cancelar')" mold="trendy"
+						onClick="@command('cancel')"
+						sclass="mybutton button theme small">
+					</button>
+				</div>
+				<div style="clear: both;"></div>
+				<div sclass="sectionSeperator"></div>
+			</div>
+
+			<span width="100%">
+				<div sclass="sectionTitle">
+					<separator />
+					<label value="Informacion Archivo"
+						sclass="sectionTitleLabel" />
+					<separator />
+				</div>
+			</span>
+			
+			<panel width="100%" sclass="sectionPanel">
+				<panelchildren>
+					<separator />
+					<grid sclass="vgrid">
+						<columns>
+							<column hflex="100%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+						</columns>
+						<rows>
+							<row width="100%">
+								<vlayout>
+ 								<hlayout>
+									<hbox>
+								          <label value="Seleccionar Archivo o Archivos" />
+								         <button label="Upload" upload="true, multiple=true" 
+								             onUpload="@command('onUploadPDF',upEvent=event)" sclass="mybutton button theme small">
+								         </button>
+								         <button label="Mostrar PDF" 
+								                onClick="@command('showPDF', path = path )">
+								           </button>
+								     </hbox>
+								 
+								</hlayout>
+								
+									
+									<hlayout>
+									
+										<label value="pathFile"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="pathfile"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.pathFile)" />
+								</vlayout>
+								
+							</row>
+							<row>
+								<hlayout  >
+										<label value="Nombre Archivo"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+											<textbox id="nameFile"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.nameFile)" />
+										
+									</hlayout>
+							</row>
+							<row>
+								<vlayout height="400px">
+									<iframe height="400px" width="100%" id="reportframe"
+								          content="@bind(vm.fileContent)">
+								     </iframe>
+								</vlayout>
+								
+							</row>
+							
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			<separator />
+
+			<separator />
+			
+			<separator />
+			
+		</div>
+	</window>
+</zk>

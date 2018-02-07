@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<window id="ValidateWindow" title="Validation" height="auto" width="500px"
+		border="normal" minimizable="false" mode="modal" maximizable="false"
+		closable="true" action="hide: slideUp" sclass="mymodal"
+		apply="org.zkoss.bind.BindComposer" onCancel="@command('closeThis')" 
+		onOK="@command('closeThis')"
+		viewModel="@id('vm') @init('zkexample.utilities.formValidationVM')">
+
+		<listbox vflex="1" sclass="mylist" width="100%" id="test" model="@load(vm.allMessages)">
+			<listhead sizable="true">
+				<listheader label=""  />
+			</listhead>
+			<template name="model" var="p1">
+				<listitem>
+					<listcell>
+						<label value="@load(p1.message)" sclass="flabel" />
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		<separator />
+		<div align="center">
+			<button label="Close" sclass="mybutton button theme small"  mold="trendy" onClick="@command('closeThis')" />
+		</div>
+	</window>
+</zk>

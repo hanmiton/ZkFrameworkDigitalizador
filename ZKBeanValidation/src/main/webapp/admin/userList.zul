@@ -1,0 +1,119 @@
+<?page title="Users List" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="userList" border="none" height="80%" width="96%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.UserListVM')">
+		<separator />
+		<separator />
+		<div width="100%">
+		
+            <div id="user">
+            	<label></label>
+            </div>
+        	<div sclass="sectionTitle">
+				<separator />
+				<label value="@bind(vm.dataFilter.firstName)" sclass="sectionTitleLabel" />
+				<separator />
+			</div>
+			
+			<div style="float:right">
+				<button label="Módulo Metas" onClick="@command('metas')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				<button label="Módulo Digitalización" onClick="@command('digitalizacion')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				<button label="Módulo Indexación" onClick="@command('indexador')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				
+				<button label="Crear Usuario" onClick="@command('onAddNew')"
+					mold="trendy" sclass="mybutton button theme small"/>
+				<button label="Salir" mold="trendy" id="btnlogout"
+					sclass="mybutton button theme small" onClick="@command('Logout')" />
+			</div>
+			<div style="clear: both;"></div>
+			<div sclass="sectionSeperator"></div>
+		</div>
+		<separator />
+		
+		
+		
+		<listbox id="" mold="paging" pageSize="11" pagingPosition="top"
+			sclass="mylist" selectedItem="@bind(vm.selectedItem)"
+			model="@load(vm.dataSet)">
+			<auxhead>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFilter.firstName)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFilter.lastName)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataFilter.email)" onChange="@command('doFilter')"
+						instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="33" mold="rounded"
+						value="@bind(vm.dataFilter.loginID)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+
+			</auxhead>
+			<listhead sizable="true">
+				<listheader label="Nombre" sortDirection="ascending"
+					sort="auto(firstName)" />
+				<listheader label="Apellido" sort="auto(lastName)" />
+				<listheader label="Correo" sort="auto(email)" />
+				<listheader label="Username" sort="auto(userLoginID)" />
+				<listheader label="Action" />
+			</listhead>
+			
+			<template name="model" var="p1">
+				<listitem>
+					<listcell label="@load(p1.firstName)" />
+					<listcell label="@load(p1.lastName)" />
+					<listcell label="@load(p1.email)" />
+					<listcell label="@load(p1.userLoginID)" />
+					<listcell>
+						<hbox spacing="20px">
+							<image
+								onClick="@command('onMeta',userRecord=p1)" sclass="fimageedit"
+								visible="@load(p1.system eq 0)"
+								tooltiptext="Asignar Meta Usuario">
+							</image>
+							<image
+								onClick="@command('onEdit',userRecord=p1)" sclass="fimageedit"
+								visible="@load(p1.system eq 0)"
+								tooltiptext="Editar Usuario">
+							</image>
+							<image
+								onClick="@command('openAsReadOnly',userRecord=p1)"
+								sclass="fimageView" tooltiptext="Visualizar detalles usuario">
+							</image>
+							<image
+								tooltip="msgPopup, position=before_start, delay=500"
+								sclass="fImageSystem" visible="@load(p1.system eq 1)" />
+							<image
+								onClick="@command('onDelete',userRecord=p1)"
+								visible="@load(p1.system eq 0)" sclass="fimageDelete"
+								tooltiptext="Eliminar Usuario ">
+							</image>
+						</hbox>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		<popup id="msgPopup">
+			<label id="msg"
+				value="Usuario definido por sistema. Editar y Eliminar no permitido.">
+			</label>
+		</popup>
+	</window>
+</zk>

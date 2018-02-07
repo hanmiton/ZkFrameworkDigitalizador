@@ -1,0 +1,180 @@
+<?page title="Me Meta List" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="metaList" border="none" height="80%" width="96%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.MetaListVM')">
+		
+		
+		<div
+			form="@id('fx') @load(vm.selectedRecord) @save(vm.selectedRecord, before='saveThis')">
+
+			<div width="96%">
+				<span width="100%">
+					<div sclass="sectionTitle">
+						<separator />
+						<label id="lcaption" sclass="sectionTitleLabel"
+							value="Asignar Meta Usuario" />
+						<label id="readonly" sclass="sectionTitleLabel"
+							value="Solo Lectura" visible="@load(vm.makeAsReadOnly)" />
+						<image
+							src="@load(fxStatus.dirty?'images/unsaved32x32.png':'')" />
+
+					</div>
+				</span>
+				<!-- 
+					<div id="buttonsDiv"
+					style="float:right;margin-top:6px;">
+					<button label="Asignar y Salir" mold="trendy"
+						visible="@load(not vm.makeAsReadOnly)"
+						onClick="@command('saveThis', action=0)"
+						sclass="mybutton button theme small">
+					</button>
+					<button label="Asignar y Seguir" mold="trendy"
+						visible="@load(not vm.makeAsReadOnly)"
+						onClick="@command('saveThis', action=1)"
+						sclass="mybutton button theme small">
+					</button>
+					<button
+						label="@load(vm.makeAsReadOnly ?'Close':'Cancelar')" mold="trendy"
+						onClick="@command('cancel')"
+						sclass="mybutton button theme small">
+					</button>
+					</div>
+				 -->
+				
+				<div style="clear: both;"></div>
+				<div sclass="sectionSeperator"></div>
+			</div>
+
+			
+			<panel width="95%" sclass="sectionPanel">
+				<panelchildren>
+					<separator />
+					<grid sclass="vgrid">
+						<columns>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+							<column hflex="10%"></column>
+						</columns>
+						<rows>
+							<row>
+								<vlayout>
+									<hlayout>
+										<label value="Cédula Identidad"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="cedula"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.cedula)" />
+								</vlayout>
+								<vlayout>
+									<hlayout>
+										<label value="Apellido"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="lastname"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.lastName)" />
+								</vlayout>
+								<vlayout>
+									<hlayout>
+										<label value="Nombre"
+											sclass="flabel" />
+										<label value="*"
+											sclass="flblreq" />
+									</hlayout>
+									<textbox id="firstname"
+										readonly="@load(vm.makeAsReadOnly)" mold="rounded" hflex="1"
+										value="@bind(fx.firstName)" />
+								</vlayout>
+							</row>
+							
+						</rows>
+					</grid>
+				</panelchildren>
+			</panel>
+			</div>
+		
+		
+		
+		
+		<separator />
+		<separator />
+		<div width="100%">
+			<div sclass="sectionTitle">
+				<separator />
+				<label value="Meta de digitalizador" sclass="sectionTitleLabel" />
+				<separator />
+			</div>
+			<div style="float:right">
+				<!-- 
+				<button label="Crear Meta" onClick="@command('onAddNew')"
+					mold="trendy" sclass="mybutton button theme small" />
+				 -->
+				
+				<button label="Salir" mold="trendy" id="btnlogout"
+					sclass="mybutton button theme small" onClick="@command('Logout')" />
+			</div>
+			<div style="clear: both;"></div>
+			<div sclass="sectionSeperator"></div>
+		</div>
+		<separator />
+		<listbox id="" mold="paging" pageSize="11" pagingPosition="top"
+			sclass="mylist" selectedItem="@bind(vm.selectedItem)"
+			model="@load(vm.dataSet)">
+		
+			<!-- 
+			
+			<auxhead>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataMetaFilter.metaName)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+				<auxheader colspan="1">
+					<image sclass="fImageFilter" />
+					<textbox cols="30" mold="rounded"
+						value="@bind(vm.dataMetaFilter.metaPath)"
+						onChange="@command('doFilter')" instant="true" />
+				</auxheader>
+			</auxhead>
+		
+			 -->
+			
+			<listhead sizable="true">
+				<listheader label="Nombre Meta" sortDirection="ascending"
+					sort="auto(nameMeta)" />
+				<listheader label="Valor Meta" sort="auto(valorMeta)" />
+				<listheader label="Descripcion Meta" sort="auto(descripcion)" />
+				<listheader label="Action" />
+			</listhead>
+			<template name="model" var="p1">
+				<listitem>
+					<listcell label="@load(p1.nameMeta)" />
+					<listcell label="@load(p1.valorMeta)" />
+					<listcell label="@load(p1.descripcion)" />
+					<listcell>
+						<hbox spacing="20px">
+							<image
+								onClick="@command('onEdit',metaRecord=p1)" sclass="fimageedit"
+								tooltiptext="Asignar Meta">
+							</image>
+							
+						</hbox>
+					</listcell>
+				</listitem>
+			</template>
+		</listbox>
+		<popup id="msgPopup">
+			<label id="msg"
+				value="Meta definido por sistema. Editar y Eliminar no permitido.">
+			</label>
+		</popup>
+	</window>
+</zk>

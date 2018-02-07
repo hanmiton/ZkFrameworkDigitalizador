@@ -1,0 +1,154 @@
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Listbox CSS Customization
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* Header Column Background Color */
+.mylist .z-listbox-header tr.z-listhead,div.z-listbox-header
+		tr.z-auxhead {
+	background-image: none;
+	background-color: #47AD55;
+}
+
+.mylist div.z-listbox-header
+		tr.z-auxhead {
+	background-image: none;
+	background-color: transparent;
+}
+
+/* Header Column Background Color when click on the header*/
+.mylist .z-listbox-header th.z-listheader-sort-over {
+	background-image: none;
+	background-color: #47AD55;
+}
+
+/* odd Rows Selected Color */
+.mylist .z-listitem.z-listbox-odd.z-listitem-seld {
+	background-image: none;
+	background-color: #77BD85;
+}
+
+.mylist .z-listitem-seld {
+	background-image: none;
+	background-color: #77BD85;
+}
+
+/* When moving the mouse on the list */
+.mylist .z-listitem.z-listitem-over {
+	background-image: none;
+	background-color: #77BD85;
+}
+
+.fimgtopbkg {
+	background-image: url("../images/green/top_bkg.gif");
+}
+
+.fimgsidetop {
+	background-image: url("../images/green/side_top.gif");
+}
+
+.fimgsidemid {
+	background-image: url("../images/green/side_mid.gif");
+}
+
+.fimgsidebgk {
+	background-image: url("../images/green/side_bkg.gif");
+}
+
+.fimgbottom {
+	background-image: url("../images/green/low_bkg.gif");
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Label CSS Customization
+/* ----------------------------------------------------------------------------------------------------------------------- */
+.TitleWBold.z-label {
+	color: #FFFFFF;
+}
+
+.sectionTitleLabel.z-label {
+	color: #0C6BA8;
+}
+
+.flabel.z-label {
+	color: #800000;
+}
+
+.sectionTitleLabel.z-label {
+	color: #0C6BA8;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Div(s)
+/* ----------------------------------------------------------------------------------------------------------------------- */
+.sectionTitleBar {
+	background: none repeat scroll 0 0 #6F8992;
+}
+
+.sectionSeperator {
+	border-bottom: 4px solid #47AD55;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------- */
+/* Button
+/* ----------------------------------------------------------------------------------------------------------------------- */
+
+/* green */
+.theme {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f),
+		to(#4e7d0e) );
+	background: -moz-linear-gradient(top, #7db72f, #4e7d0e);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f',
+		endColorstr='#4e7d0e' );
+}
+
+.theme:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28),
+		to(#436b0c) );
+	background: -moz-linear-gradient(top, #6b9d28, #436b0c);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28',
+		endColorstr='#436b0c' );
+}
+
+.theme:active {
+	color: #a9c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#4e7d0e),
+		to(#7db72f) );
+	background: -moz-linear-gradient(top, #4e7d0e, #7db72f);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e7d0e',
+		endColorstr='#7db72f' );
+}
+
+/* Start: MessageBox Start here
+---------------------------------------------- */
+.z-messagebox-btn {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f),
+		to(#4e7d0e) );
+	background: -moz-linear-gradient(top, #7db72f, #4e7d0e);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f',
+		endColorstr='#4e7d0e' );
+}
+
+.z-messagebox-btn:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28),
+		to(#436b0c) );
+	background: -moz-linear-gradient(top, #6b9d28, #436b0c);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28',
+		endColorstr='#436b0c' );
+}
+
+.z-messagebox-window .z-window-highlighted-hm,.z-window-highlighted-br,.z-window-highlighted-cr,.z-window-highlighted-cl,.z-window-highlighted-hr,.z-window-highlighted-tr,.z-window-highlighted-hl
+	{
+	background-image: none;
+	background-color:  #47AD55;
+}
+
+/* End : MessageBox End Here
+---------------------------------------------- */

@@ -1,0 +1,30 @@
+<?page title="Main" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="main" border="none" width="100%" height="100%"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('zkexample.zkoss.MainVM')">
+		<borderlayout id="mainlayout" height="100%">
+			<north id="north" height="19%" border="0">
+				<div>
+					<include src="/mainpage/banner.zul"/>
+					<image sclass="fimgtopbkg"></image>
+					<image sclass="fimgsidetop"></image>
+					
+				</div>
+			</north>
+			
+			<west id="west" border="0">
+			</west>
+			<center id="center" border="0">
+				 
+			</center>
+			<south id="south" border="0" size="4%">
+				<div width="100%" height="100%">
+					<include src="/mainpage/footer.zul"/>
+					<image sclass="fimgbottom"></image>
+				</div>
+				
+			</south>
+		</borderlayout>
+	</window>
+</zk>
