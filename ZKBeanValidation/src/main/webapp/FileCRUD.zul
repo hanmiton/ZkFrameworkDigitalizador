@@ -8,6 +8,11 @@
 			form="@id('fx') @load(vm.selectedRecord) @save(vm.selectedRecord, before='saveThis')">
 
 
+				<div>viendo git</div>
+				<div>viendo git</div>
+				<div>viendo git</div>
+				<div>viendo git</div>
+				
 			<div width="96%">
 				<span width="100%">
 					<div sclass="sectionTitle">
